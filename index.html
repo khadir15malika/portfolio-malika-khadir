@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Malika Khadir — Odoo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Malika Khadir, développeuse Odoo certifiée : développement, personnalisation, migration de modules et intégration d'API, d'Odoo 15 à 19.">
+<meta property="og:title" content="Malika Khadir — Développeuse Odoo">
+<meta property="og:description" content="Développement, personnalisation, migration de modules et intégration d'API, d'Odoo 15 à 19.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: navy hero with profile card → floating stat cards → services → timeline → featured project grid → skills → certification + education → navy contact band */
+:root{
+  --bg:#F5F7FB; --surface:#FFFFFF; --ink:#0E1A33; --muted:#5B6579; --line:#E3E8F1;
+  --accent:#2F4FD8; --accent-soft:#E9EDFD; --gold:#B8862C; --gold-soft:#FBF3E2;
+  --navy:#0C1934; --navy-2:#13254A; --on-navy:#E9EEFA; --on-navy-muted:#A8B4CE;
+  --shadow:0 1px 2px rgba(14,26,51,.04), 0 12px 32px -12px rgba(14,26,51,.14);
+  --display:"Sora", "Segoe UI", system-ui, sans-serif;
+  --body:"Manrope", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#08101F; --surface:#0F1A30; --ink:#E7ECF7; --muted:#97A3BC; --line:#1E2A44;
+  --accent:#7D93FF; --accent-soft:#18244A; --gold:#E3B75C; --gold-soft:#2A2214;
+  --navy:#0B1630; --navy-2:#122347; --shadow:0 1px 2px rgba(0,0,0,.3), 0 14px 34px -14px rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08101F; --surface:#0F1A30; --ink:#E7ECF7; --muted:#97A3BC; --line:#1E2A44;
+  --accent:#7D93FF; --accent-soft:#18244A; --gold:#E3B75C; --gold-soft:#2A2214;
+  --navy:#0B1630; --navy-2:#122347; --shadow:0 1px 2px rgba(0,0,0,.3), 0 14px 34px -14px rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--surface)}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-.02em}
+p{margin:0}
+button{font:inherit;cursor:pointer}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:19;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:24px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;color:var(--ink);text-decoration:none;font-size:16px}
+.brand .mk{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:13px;letter-spacing:.02em}
+.navlinks{display:flex;gap:26px;list-style:none;margin:0 0 0 auto;padding:0}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:600;transition:color .2s}
+.navlinks a:hover,.navlinks a.active{color:var(--accent)}
+.navright{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--bg)}
+.lang button{border:0;background:none;color:var(--muted);font:600 12px var(--body);padding:5px 11px;border-radius:999px}
+.lang button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(14,26,51,.15)}
+.nav-cta{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 16px;border-radius:10px;transition:transform .2s, box-shadow .2s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px var(--accent)}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;width:40px;height:38px;padding:0;place-items:center}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--navy);color:var(--on-navy);overflow:hidden;padding-bottom:96px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(700px 420px at 85% 10%, rgba(94,125,255,.30), transparent 60%),
+  radial-gradient(520px 380px at 0% 100%, rgba(212,163,74,.16), transparent 60%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);background-size:26px 26px;mask-image:linear-gradient(to bottom, #000 30%, transparent);-webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:center;padding-block:80px 0}
+.status{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#BFF3D5;background:rgba(52,199,120,.12);border:1px solid rgba(52,199,120,.3);padding:6px 14px;border-radius:999px;margin-bottom:26px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#34C778;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,199,120,.7)}70%{box-shadow:0 0 0 8px rgba(52,199,120,0)}100%{box-shadow:0 0 0 0 rgba(52,199,120,0)}}
+.hello{font-size:17px;color:var(--on-navy-muted);font-weight:500}
+.hero h1{font-size:clamp(44px,7.4vw,80px);font-weight:800;letter-spacing:-.04em;margin-top:6px;color:#fff}
+.hero h1 span{background:linear-gradient(100deg,#9FB2FF 10%,#E7C27A 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-family:var(--display);font-size:clamp(19px,2.4vw,24px);font-weight:600;margin-top:14px;color:#fff;min-height:1.4em}
+.role .rot{color:#E7C27A;border-right:2px solid #E7C27A;padding-right:4px;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{border-color:transparent}}
+.lead{max-width:56ch;color:var(--on-navy-muted);margin-top:18px;font-size:17px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s, box-shadow .2s, background .2s}
+.btn svg.i{width:18px;height:18px}
+.btn.primary{background:#fff;color:var(--navy)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(0,0,0,.5)}
+.btn.ghost{color:#fff;border:1px solid rgba(255,255,255,.28)}
+.btn.ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+
+.profile{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:28px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.avatar{width:96px;height:96px;border-radius:50%;padding:3px;background:conic-gradient(from 200deg,#9FB2FF,#E7C27A,#9FB2FF)}
+.avatar > *{width:100%;height:100%;border-radius:50%;background:var(--navy-2);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:30px;color:#fff;object-fit:cover}
+.profile .top{display:flex;gap:18px;align-items:center}
+.profile h3{font-size:20px;color:#fff}
+.profile .sub{font-size:14px;color:var(--on-navy-muted);display:flex;align-items:center;gap:6px;margin-top:4px}
+.profile .sub svg.i{width:15px;height:15px}
+.cert-pill{display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 16px;border-radius:14px;background:rgba(231,194,122,.12);border:1px solid rgba(231,194,122,.32);color:#F3DDB0}
+.cert-pill svg.i{color:#E7C27A}
+.cert-pill b{display:block;color:#fff;font-size:14.5px}
+.cert-pill small{font-size:12.5px}
+.vlabel{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--on-navy-muted);margin:20px 0 10px}
+.vrow{display:flex;gap:6px}
+.vchip{flex:1;text-align:center;padding:9px 0;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:14px;color:#fff;transition:transform .2s, background .2s}
+.vchip:hover{transform:translateY(-3px);background:rgba(255,255,255,.14)}
+.vchip.hl{background:linear-gradient(135deg,#E7C27A,#C99A45);color:#1B1305;border-color:transparent;font-weight:700}
+
+/* ---------- stats ---------- */
+.stats-wrap{position:relative;z-index:2;margin-top:-56px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.stat{padding:26px 28px}
+.stat + .stat{border-left:1px solid var(--line)}
+.stat b{display:block;font-family:var(--display);font-size:clamp(32px,4vw,42px);font-weight:800;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat b em{font-style:normal;color:var(--accent)}
+.stat span{display:block;margin-top:8px;font-size:14px;color:var(--muted);font-weight:500}
+
+/* ---------- sections ---------- */
+section.block{padding-block:104px 0}
+.sec-head{max-width:640px;margin-bottom:44px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--accent);border-radius:2px}
+.sec-head h2{font-size:clamp(30px,4.2vw,44px);font-weight:700;margin-top:12px}
+.sec-head p{color:var(--muted);margin-top:12px;font-size:17px}
+
+.icon-tile{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);transition:transform .3s, background .3s, color .3s}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.service{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:transform .3s, box-shadow .3s, border-color .3s}
+.service:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.service:hover .icon-tile{background:var(--accent);color:#fff;transform:rotate(-6deg)}
+.service h3{font-size:18px;font-weight:700}
+.service p{color:var(--muted);font-size:15px}
+
+/* experience */
+.timeline{position:relative;display:grid;gap:20px;padding-left:36px}
+.timeline::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--accent),var(--line))}
+.job{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 28px;transition:box-shadow .3s, transform .3s}
+.job:hover{box-shadow:var(--shadow);transform:translateX(4px)}
+.job::before{content:"";position:absolute;left:-34px;top:30px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:3px solid var(--accent)}
+.job.current::before{background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+.job-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.job-id{display:flex;gap:14px;align-items:center}
+.logo{width:48px;height:48px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:17px;flex:none}
+.job h3{font-size:20px;font-weight:700}
+.org{color:var(--muted);font-weight:600;font-size:15px;margin-top:2px}
+.job-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.period{font-size:14px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.pill{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.pill.now{background:rgba(52,199,120,.14);color:#1E9A58}
+.job ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:8px}
+.job li{display:flex;gap:10px;color:var(--muted);font-size:15.5px}
+.job li svg.i{width:18px;height:18px;color:var(--accent);margin-top:3px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:8px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:14px;overflow:hidden;transition:transform .3s, box-shadow .3s, border-color .3s}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.card:hover .icon-tile{background:var(--accent);color:#fff}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ver{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:8px;background:var(--gold-soft);color:var(--gold);white-space:nowrap}
+.card h3{font-size:20px;font-weight:700}
+.card p.desc{color:var(--muted);font-size:15px}
+.features{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.features li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;font-weight:500}
+.features li svg.i{width:17px;height:17px;color:#1E9A58;margin-top:3px}
+.card .tags{margin-top:auto;padding-top:6px}
+.more{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;text-decoration:none}
+.more svg.i{width:16px;height:16px;transition:transform .2s}
+.more:hover svg.i{transform:translateX(3px)}
+.card.featured{grid-column:span 2;grid-row:span 2;background:var(--navy);color:var(--on-navy);border-color:transparent;padding:36px}
+.card.featured::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 320px at 100% 0%, rgba(94,125,255,.32), transparent 60%),radial-gradient(400px 260px at 0% 100%, rgba(212,163,74,.18), transparent 60%);pointer-events:none}
+.card.featured > *{position:relative}
+.card.featured .icon-tile{background:rgba(255,255,255,.1);color:#fff;width:60px;height:60px;border-radius:16px}
+.card.featured .icon-tile svg.i{width:28px;height:28px}
+.card.featured h3{font-size:clamp(24px,3vw,32px);color:#fff}
+.card.featured p.desc{color:var(--on-navy-muted);font-size:17px;max-width:52ch}
+.card.featured .ver{background:rgba(231,194,122,.16);color:#E7C27A}
+.card.featured .features{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:6px}
+.card.featured .features li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:14px 16px;border-radius:14px;color:#fff;font-size:15px}
+.card.featured .features li svg.i{color:#7EE2A8}
+.card.featured .tag{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:var(--on-navy-muted)}
+.card.featured .flag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E7C27A}
+.card.featured .more{color:#fff}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;transition:box-shadow .3s}
+.skill:hover{box-shadow:var(--shadow)}
+.skill-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.skill-head .icon-tile{width:42px;height:42px;border-radius:12px}
+.skill-head svg.i{width:20px;height:20px}
+.skill h3{font-size:17px;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;font-weight:500;padding:6px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);transition:border-color .2s, color .2s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.key{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+/* certification + education */
+.cred{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:start}
+.cert{position:relative;overflow:hidden;background:var(--navy);color:var(--on-navy);border-radius:22px;padding:34px;display:flex;flex-direction:column;gap:20px}
+.cert::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 280px at 100% 0%, rgba(231,194,122,.22), transparent 60%);pointer-events:none}
+.cert > *{position:relative}
+.cert .seal{display:flex;align-items:center;gap:22px}
+.ring{width:128px;height:128px;flex:none;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .track{fill:none;stroke:rgba(255,255,255,.12);stroke-width:9}
+.ring .val{fill:none;stroke:url(#gold);stroke-width:9;stroke-linecap:round;stroke-dasharray:326.7;animation:ring 1.6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ring{from{stroke-dashoffset:326.7}}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:26px;font-weight:800;color:#fff;text-align:center;line-height:1.1}
+.ring b small{display:block;font-family:var(--body);font-size:11px;font-weight:600;color:var(--on-navy-muted);letter-spacing:.06em;text-transform:uppercase}
+.cert .flag{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E7C27A;display:flex;align-items:center;gap:8px}
+.cert h3{font-size:24px;color:#fff;margin-top:8px}
+.cert .meta{color:var(--on-navy-muted);font-size:14.5px;margin-top:6px}
+.cert p{color:var(--on-navy-muted);font-size:15px;border-top:1px solid rgba(255,255,255,.12);padding-top:18px}
+.edu{display:grid;gap:14px}
+.edu-item{display:flex;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 24px;transition:box-shadow .3s, transform .3s}
+.edu-item:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.edu-item .yr{font-size:13px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.edu-item h3{font-size:18px;font-weight:700;margin-top:2px}
+.edu-item .school{font-size:14.5px;font-weight:600;color:var(--ink);margin-top:2px}
+.edu-item p{color:var(--muted);font-size:14.5px;margin-top:4px}
+
+/* contact */
+.contact{margin-top:112px;position:relative;overflow:hidden;background:var(--navy);color:var(--on-navy)}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 400px at 90% 100%, rgba(94,125,255,.28), transparent 60%),radial-gradient(500px 340px at 0% 0%, rgba(212,163,74,.14), transparent 60%);pointer-events:none}
+.contact .wrap{position:relative;padding-block:96px 72px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.contact .eyebrow{color:#E7C27A}
+.contact .eyebrow::before{background:#E7C27A}
+.contact h2{font-size:clamp(34px,5vw,54px);font-weight:800;color:#fff;margin-top:14px}
+.contact .intro p{color:var(--on-navy-muted);margin-top:16px;font-size:17px;max-width:44ch}
+.lines{display:grid;gap:12px}
+.line{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:background .2s, transform .2s;min-width:0}
+.line:hover{background:rgba(255,255,255,.1);transform:translateX(4px)}
+.line .ico{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#fff;flex:none}
+.line .txt{min-width:0;flex:1}
+.line small{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--on-navy-muted)}
+.line .val{display:block;color:#fff;font-weight:600;font-size:15.5px;overflow-wrap:anywhere;text-decoration:none}
+.line button{flex:none;font-weight:700;font-size:13px;background:#fff;color:var(--navy);border:0;border-radius:9px;padding:8px 14px}
+footer{position:relative;background:var(--navy);color:var(--on-navy-muted)}
+footer .wrap{padding-block:22px calc(22px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(255,255,255,.1);font-size:13.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* motion: visible at rest, elements below the fold rise in when reached */
+.reveal-in{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes rise{from{transform:translateY(26px);opacity:.1}to{transform:none;opacity:1}}
+.hero .intro > *{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .intro > *:nth-child(2){animation-delay:.06s}
+.hero .intro > *:nth-child(3){animation-delay:.12s}
+.hero .intro > *:nth-child(4){animation-delay:.18s}
+.hero .intro > *:nth-child(5){animation-delay:.24s}
+.hero .intro > *:nth-child(6){animation-delay:.30s}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .services{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .projects{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card.featured{grid-row:auto}
+  .cred{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .hero .wrap,.contact .wrap{grid-template-columns:1fr}
+  .hero .wrap{padding-top:56px;gap:40px}
+  .profile{animation:none}
+  .menu-btn{display:grid}
+  .nav-cta{display:none}
+  .navright{margin-left:auto}
+  .navlinks{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;margin:0;background:var(--surface);border-bottom:1px solid var(--line);padding:8px max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px));box-shadow:var(--shadow)}
+  .navlinks.open{display:flex}
+  .navlinks a{display:block;padding-block:11px;font-size:16px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .services,.projects,.skills{grid-template-columns:1fr}
+  .card.featured{grid-column:auto;padding:28px 24px}
+  .card.featured .features{grid-template-columns:1fr}
+  .stat{padding:20px}
+  .timeline{padding-left:28px}
+  .timeline::before{left:6px}
+  .job{padding:22px 20px}
+  .job::before{left:-29px}
+  .job-meta{align-items:flex-start}
+  .cert .seal{flex-direction:column;align-items:flex-start}
+  section.block{padding-top:80px}
+  .brand .name{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F1D594"/><stop offset="1" stop-color="#C99A45"/></linearGradient></defs>
+</svg>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mk">MK</span><span class="name">Malika Khadir</span></a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#services" data-i18n="nav_services">Services</a></li>
+      <li><a href="#experience" data-i18n="nav_exp">Expérience</a></li>
+      <li><a href="#projets" data-i18n="nav_proj">Projets</a></li>
+      <li><a href="#competences" data-i18n="nav_skills">Compétences</a></li>
+      <li><a href="#formation" data-i18n="nav_edu">Formation</a></li>
+    </ul>
+    <div class="navright">
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" id="lang-fr" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="nav-cta" href="#contact" data-i18n="nav_contact">Me contacter</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="navlinks" aria-label="Menu"></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="intro">
+      <div class="status" id="status" data-i18n="available">Disponible pour de nouvelles missions</div>
+      <div class="hello" data-i18n="hello">Bonjour, je suis</div>
+      <h1>Malika <span>Khadir</span></h1>
+      <div class="role"><span data-i18n="role_prefix">Développeuse Odoo ·</span> <span class="rot" id="rot">Python</span></div>
+      <p class="lead" data-i18n="lead">Je conçois, personnalise et migre des modules Odoo qui simplifient le quotidien des entreprises : ventes, stock, site web, reporting et intégrations d'API fournisseurs.</p>
+      <div class="ctas" id="ctas"></div>
+    </div>
+    <aside class="profile" id="profile"></aside>
+  </div>
+</header>
+
+<div class="wrap stats-wrap"><div class="stats" id="stats"></div></div>
+
+<main>
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="services_eyebrow">Ce que je fais</span>
+      <h2 data-i18n="services_title">Des solutions Odoo pensées pour votre métier</h2>
+      <p data-i18n="services_text">Du besoin fonctionnel jusqu'au code en production, j'accompagne chaque étape de vos projets Odoo.</p>
+    </div>
+    <div class="services" id="services-list"></div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="exp_eyebrow">Parcours</span>
+      <h2 data-i18n="exp_title">Expérience professionnelle</h2>
+      <p data-i18n="exp_text">Plus de trois ans à développer, migrer et personnaliser Odoo pour des entreprises et des clients en Algérie et en Europe.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section class="block" id="projets">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="proj_eyebrow">Réalisations</span>
+      <h2 data-i18n="proj_title">Projets sélectionnés</h2>
+      <p data-i18n="proj_text">Des modules concrets, conçus pour répondre à de vrais besoins métier.</p>
+    </div>
+    <div class="projects" id="projects"></div>
+  </div>
+</section>
+
+<section class="block" id="competences">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="skills_eyebrow">Expertise</span>
+      <h2 data-i18n="skills_title">Compétences techniques</h2>
+      <p data-i18n="skills_text">Un socle solide en développement Odoo, Python et bases de données.</p>
+    </div>
+    <div class="skills" id="skills"></div>
+  </div>
+</section>
+
+<section class="block" id="formation">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="edu_eyebrow">Diplômes</span>
+      <h2 data-i18n="edu_title">Certification & formation</h2>
+    </div>
+    <div class="cred">
+      <div class="cert" id="cert"></div>
+      <div class="edu" id="edu"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow" data-i18n="contact_eyebrow">Contact</span>
+      <h2 data-i18n="contact_title">Parlons de votre projet Odoo</h2>
+      <p data-i18n="contact_text">Un module à développer, une migration à planifier ou un processus à automatiser ? Écrivez-moi, je réponds rapidement.</p>
+    </div>
+    <div class="lines" id="lines"></div>
+  </div>
+</section>
+<footer><div class="wrap"><span id="year">© 2026 Malika Khadir</span><span data-i18n="footer">Développeuse Odoo · Tizi Ouzou, Algérie</span></div></footer>
+
+<script src="content.js"></script>
+<script>
+(function(){
+  var P = window.PORTFOLIO, S = P.settings;
+
+  var ICONS = {
+    code:'<path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/>',
+    migrate:'<path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/>',
+    plug:'<path d="M12 22v-5M9 8V2M15 8V2M18 8v4a6 6 0 0 1-12 0V8z"/>',
+    chart:'<path d="M3 3v18h18M8 16v-4M13 16V8M18 16v-7"/>',
+    type:'<path d="M4 7V4h16v3M9 20h6M12 4v16"/>',
+    wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/>',
+    home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    plane:'<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+    school:'<path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c3 2 9 2 12 0v-5"/>',
+    database:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/>',
+    terminal:'<rect x="2" y="3" width="20" height="18" rx="3"/><path d="m7 9 3 3-3 3M13 15h4"/>',
+    globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>',
+    users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+    shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+    check:'<path d="M20 6 9 17l-5-5"/>',
+    mail:'<rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 6L2 7"/>',
+    phone:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/>',
+    linkedin:'<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M7 10v7M7 7v.01M11 17v-7M11 13.5a3 3 0 0 1 6 0V17"/>',
+    github:'<path d="M9 19c-4 1.5-4-2-6-2.5M15 22v-3.9a3.4 3.4 0 0 0-1-2.6c3.1-.4 6.4-1.5 6.4-6.9a5.4 5.4 0 0 0-1.5-3.7 5 5 0 0 0-.1-3.7s-1.2-.4-3.9 1.4a13.4 13.4 0 0 0-7 0C6.2 1.8 5 2.2 5 2.2a5 5 0 0 0-.1 3.7A5.4 5.4 0 0 0 3.4 9.6c0 5.4 3.3 6.5 6.4 6.9a3.4 3.4 0 0 0-1 2.6V22"/>',
+    award:'<circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>',
+    pin:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+    download:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
+    arrow:'<path d="M5 12h14M12 5l7 7-7 7"/>',
+    star:'<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
+    menu:'<path d="M4 7h16M4 12h16M4 17h16"/>'
+  };
+  function ic(n){ return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true">'+(ICONS[n]||ICONS.code)+'</svg>'; }
+
+  var UI = {
+    fr:{nav_services:"Services",nav_exp:"Expérience",nav_proj:"Projets",nav_skills:"Compétences",nav_edu:"Formation",nav_contact:"Me contacter",
+        available:"Disponible pour de nouvelles missions",hello:"Bonjour, je suis",role_prefix:"Développeuse Odoo ·",
+        lead:"Je conçois, personnalise et migre des modules Odoo qui simplifient le quotidien des entreprises : ventes, stock, site web, reporting et intégrations d'API fournisseurs.",
+        cta_contact:"Me contacter",cta_projects:"Voir mes projets",cta_cv:"Télécharger mon CV",
+        profile_role:"Développeuse Odoo",location:"Tizi Ouzou, Algérie",cert_short:"Certifiée Odoo 19",cert_sub:"Odoo S.A. · score",versions:"Versions Odoo maîtrisées",
+        services_eyebrow:"Ce que je fais",services_title:"Des solutions Odoo pensées pour votre métier",services_text:"Du besoin fonctionnel jusqu'au code en production, j'accompagne chaque étape de vos projets Odoo.",
+        exp_eyebrow:"Parcours",exp_title:"Expérience professionnelle",exp_text:"Plus de trois ans à développer, migrer et personnaliser Odoo pour des entreprises et des clients en Algérie et en Europe.",now:"En poste",
+        proj_eyebrow:"Réalisations",proj_title:"Projets sélectionnés",proj_text:"Des modules concrets, conçus pour répondre à de vrais besoins métier.",featured:"Projet phare",see:"Voir le projet",
+        skills_eyebrow:"Expertise",skills_title:"Compétences techniques",skills_text:"Un socle solide en développement Odoo, Python et bases de données.",
+        edu_eyebrow:"Diplômes",edu_title:"Certification & formation",cert_flag:"Certification officielle",score:"score",
+        contact_eyebrow:"Contact",contact_title:"Parlons de votre projet Odoo",contact_text:"Un module à développer, une migration à planifier ou un processus à automatiser ? Écrivez-moi, je réponds rapidement.",
+        email:"E-mail",phone:"Téléphone",copy:"Copier",copied:"Copié ✓",footer:"Développeuse Odoo · Tizi Ouzou, Algérie",
+        roles:["Python","Migration de modules","Intégration d'API","Rapports QWeb","Consultante fonctionnelle"]},
+    en:{nav_services:"Services",nav_exp:"Experience",nav_proj:"Projects",nav_skills:"Skills",nav_edu:"Education",nav_contact:"Contact me",
+        available:"Available for new projects",hello:"Hi, I'm",role_prefix:"Odoo Developer ·",
+        lead:"I design, customize and migrate Odoo modules that make everyday business easier: sales, inventory, website, reporting and supplier API integrations.",
+        cta_contact:"Contact me",cta_projects:"See my projects",cta_cv:"Download my CV",
+        profile_role:"Odoo Developer",location:"Tizi Ouzou, Algeria",cert_short:"Odoo 19 Certified",cert_sub:"Odoo S.A. · score",versions:"Odoo versions mastered",
+        services_eyebrow:"What I do",services_title:"Odoo solutions built around your business",services_text:"From functional needs to production code, I support every step of your Odoo projects.",
+        exp_eyebrow:"Career",exp_title:"Professional experience",exp_text:"Over three years developing, migrating and customizing Odoo for companies and clients in Algeria and Europe.",now:"Current",
+        proj_eyebrow:"Work",proj_title:"Selected projects",proj_text:"Concrete modules built to answer real business needs.",featured:"Featured project",see:"See the project",
+        skills_eyebrow:"Expertise",skills_title:"Technical skills",skills_text:"A solid foundation in Odoo development, Python and databases.",
+        edu_eyebrow:"Degrees",edu_title:"Certification & education",cert_flag:"Official certification",score:"score",
+        contact_eyebrow:"Contact",contact_title:"Let's talk about your Odoo project",contact_text:"A module to build, a migration to plan or a process to automate? Write to me, I reply quickly.",
+        email:"Email",phone:"Phone",copy:"Copy",copied:"Copied ✓",footer:"Odoo Developer · Tizi Ouzou, Algeria",
+        roles:["Python","Module migration","API integration","QWeb reports","Functional consultant"]}
+  };
+
+  var lang = "fr";
+  try { lang = localStorage.getItem("lang") || ((navigator.language||"fr").slice(0,2)==="fr" ? "fr" : "en"); } catch(e){}
+  if(!UI[lang]) lang = "fr";
+
+  function t(o){ if(o==null) return ""; if(typeof o!=="object") return String(o); return o[lang] || o.fr || ""; }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  function $(id){ return document.getElementById(id); }
+  function tags(list){ return (list&&list.length) ? '<div class="tags">'+list.map(function(x){return '<span class="tag">'+esc(x)+'</span>';}).join("")+'</div>' : ""; }
+  function initials(s){ return s.replace(/[·&].*$/,"").trim().split(/\s+/).map(function(w){return w[0];}).join("").slice(0,2).toUpperCase(); }
+  function fmtScore(n){ return (lang==="fr" ? String(n).replace(".", ",") : String(n)) + " %"; }
+
+  function render(){
+    var u = UI[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){ var k=el.dataset.i18n; if(u[k]) el.textContent=u[k]; });
+    document.querySelectorAll(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.lang===lang); });
+    $("status").hidden = !S.available;
+    $("menu-btn").innerHTML = ic("menu");
+
+    var ctas = '<a class="btn primary" href="#contact">'+ic("mail")+u.cta_contact+'</a>'+
+               '<a class="btn ghost" href="#projets">'+u.cta_projects+ic("arrow")+'</a>';
+    if(S.cvFile) ctas += '<a class="btn ghost" href="'+esc(S.cvFile)+'" target="_blank" rel="noopener">'+ic("download")+u.cta_cv+'</a>';
+    $("ctas").innerHTML = ctas;
+
+    var c = P.certification;
+    $("profile").innerHTML =
+      '<div class="top"><div class="avatar">'+(S.photo?'<img src="'+esc(S.photo)+'" alt="Malika Khadir">':'<div>MK</div>')+'</div>'+
+      '<div><h3>Malika Khadir</h3><div class="sub">'+ic("code")+u.profile_role+'</div><div class="sub">'+ic("pin")+u.location+'</div></div></div>'+
+      '<div class="cert-pill">'+ic("award")+'<div><b>'+u.cert_short+'</b><small>'+u.cert_sub+' '+fmtScore(c.score)+' · '+esc(t(c.date))+'</small></div></div>'+
+      '<div class="vlabel">'+u.versions+'</div><div class="vrow">'+
+      P.versions.map(function(v){ return '<div class="vchip'+(v.highlight?" hl":"")+'" title="'+esc(t(v))+'">'+esc(v.v)+'</div>'; }).join("")+'</div>';
+
+    $("stats").innerHTML = P.stats.map(function(s){
+      return '<div class="stat"><b><span data-count="'+s.value+'">'+s.value+'</span><em>'+esc(s.suffix||"")+'</em></b><span>'+esc(t(s))+'</span></div>';
+    }).join("");
+
+    $("services-list").innerHTML = P.services.map(function(s,i){
+      return '<article class="service rv" style="--d:'+(i*.07)+'s"><div class="icon-tile">'+ic(s.icon)+'</div><h3>'+esc(t(s.title))+'</h3><p>'+esc(t(s.text))+'</p></article>';
+    }).join("");
+
+    $("timeline").innerHTML = P.experience.map(function(j){
+      return '<article class="job rv'+(j.current?" current":"")+'"><div class="job-top"><div class="job-id"><div class="logo">'+esc(initials(j.org))+'</div>'+
+        '<div><h3>'+esc(t(j.role))+'</h3><div class="org">'+esc(j.org)+'</div></div></div>'+
+        '<div class="job-meta"><span class="period">'+esc(t(j.period))+'</span><span class="pill'+(j.current?" now":"")+'">'+(j.current?u.now+' · ':'')+esc(t(j.type))+'</span></div></div>'+
+        '<ul>'+(j.points[lang]||j.points.fr).map(function(p){return '<li>'+ic("check")+'<span>'+esc(p)+'</span></li>';}).join("")+'</ul>'+tags(j.tags)+'</article>';
+    }).join("");
+
+    $("projects").innerHTML = P.projects.map(function(p,i){
+      var feats = p.features ? (p.features[lang]||p.features.fr) : [];
+      return '<article class="card rv'+(p.featured?" featured":"")+'" style="--d:'+(i*.06)+'s">'+
+        (p.featured?'<span class="flag">'+ic("star")+u.featured+'</span>':'')+
+        '<div class="card-top"><div class="icon-tile">'+ic(p.icon)+'</div><span class="ver">'+esc(t(p.version))+'</span></div>'+
+        '<h3>'+esc(t(p.title))+'</h3><p class="desc">'+esc(t(p.text))+'</p>'+
+        (feats.length?'<ul class="features">'+feats.map(function(f){return '<li>'+ic("check")+'<span>'+esc(f)+'</span></li>';}).join("")+'</ul>':'')+
+        (p.link?'<a class="more" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+u.see+ic("arrow")+'</a>':'')+
+        tags(p.tags)+'</article>';
+    }).join("");
+
+    $("skills").innerHTML = P.skills.map(function(g,i){
+      return '<div class="skill rv" style="--d:'+(i%3*.07)+'s"><div class="skill-head"><div class="icon-tile">'+ic(g.icon)+'</div><h3>'+esc(t(g.title))+'</h3></div><div class="chips">'+
+        g.items.map(function(x){return '<span class="chip'+(x.key?" key":"")+'">'+esc(t(x))+'</span>';}).join("")+'</div></div>';
+    }).join("");
+
+    var off = (326.7*(1-c.score/100)).toFixed(1);
+    $("cert").innerHTML =
+      '<div class="seal"><div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="52"/><circle class="val" cx="60" cy="60" r="52" style="stroke-dashoffset:'+off+'"/></svg>'+
+      '<b><span>'+fmtScore(c.score)+'<small>'+u.score+'</small></span></b></div>'+
+      '<div><div class="flag">'+ic("award")+u.cert_flag+'</div><h3>'+esc(c.title)+'</h3><div class="meta">'+esc(c.issuer)+' · '+esc(t(c.date))+'</div></div></div>'+
+      '<p>'+esc(t(c.text))+'</p>';
+    $("cert").classList.add("rv");
+
+    $("edu").innerHTML = P.education.map(function(e){
+      return '<div class="edu-item rv"><div class="icon-tile">'+ic("school")+'</div><div><div class="yr">'+esc(e.years)+'</div><h3>'+esc(t(e.title))+'</h3>'+
+        '<div class="school">'+esc(e.school||"")+'</div><p>'+esc(t(e.text))+'</p></div></div>';
+    }).join("");
+
+    var L = [];
+    if(S.email) L.push('<div class="line"><span class="ico">'+ic("mail")+'</span><span class="txt"><small>'+u.email+'</small><span class="val" id="v-mail">'+esc(S.email)+'</span></span><button type="button" id="copy-mail" data-copy="v-mail">'+u.copy+'</button></div>');
+    if(S.phone) L.push('<div class="line"><span class="ico">'+ic("phone")+'</span><span class="txt"><small>'+u.phone+'</small><span class="val" id="v-tel">'+esc(S.phone)+'</span></span><button type="button" id="copy-tel" data-copy="v-tel">'+u.copy+'</button></div>');
+    if(S.linkedin) L.push('<div class="line"><span class="ico">'+ic("linkedin")+'</span><span class="txt"><small>LinkedIn</small><a class="val" href="'+esc(S.linkedin)+'" target="_blank" rel="noopener">'+esc(S.linkedin.replace(/^https?:\/\/(www\.)?/,""))+'</a></span></div>');
+    if(S.github) L.push('<div class="line"><span class="ico">'+ic("github")+'</span><span class="txt"><small>GitHub</small><a class="val" href="'+esc(S.github)+'" target="_blank" rel="noopener">'+esc(S.github.replace(/^https?:\/\/(www\.)?/,""))+'</a></span></div>');
+    $("lines").innerHTML = L.join("");
+
+    $("year").textContent = "© " + new Date().getFullYear() + " Malika Khadir";
+    rot.list = u.roles; rot.i = 0; rot.el.textContent = u.roles[0];
+    observe();
+  }
+
+  /* rotating role with typing effect */
+  var rot = { el: $("rot"), list: [], i: 0,
+    start: function(){
+      var self = this; if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      setInterval(function(){
+        self.i = (self.i+1) % self.list.length; var word = self.list[self.i], n = 0;
+        var typing = setInterval(function(){ n++; self.el.textContent = word.slice(0,n); if(n>=word.length) clearInterval(typing); }, 45);
+      }, 2800);
+    } };
+
+  /* scroll reveal: nothing hidden at rest; only elements below the fold animate when reached */
+  var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("reveal-in"); io.unobserve(e.target); } });
+  }, {threshold:.12}) : null;
+  function observe(){
+    if(!io) return;
+    document.querySelectorAll(".rv:not([data-seen])").forEach(function(el){
+      el.dataset.seen = 1;
+      if(el.getBoundingClientRect().top > window.innerHeight) io.observe(el);
+    });
+  }
+
+  function countUp(){
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    document.querySelectorAll("[data-count]").forEach(function(el){
+      var end = +el.dataset.count, t0 = performance.now(), dur = 1200;
+      (function step(now){ var p = Math.min(1,(now-t0)/dur), e = 1-Math.pow(1-p,3);
+        el.textContent = Math.round(end*e); if(p<1) requestAnimationFrame(step); })(t0);
+    });
+  }
+
+  document.addEventListener("click", function(ev){
+    var b = ev.target.closest("[data-lang]");
+    if(b){ lang = b.dataset.lang; try{ localStorage.setItem("lang",lang); }catch(e){} render(); return; }
+    var c = ev.target.closest("[data-copy]");
+    if(c){
+      var el = $(c.dataset.copy), u = UI[lang];
+      var done = function(){ c.textContent = u.copied; setTimeout(function(){ c.textContent = u.copy; }, 1600); };
+      var fallback = function(){ var r=document.createRange(); r.selectNodeContents(el); var s=getSelection(); s.removeAllRanges(); s.addRange(r); };
+      try{ navigator.clipboard.writeText(el.textContent.trim()).then(done, fallback); }catch(e){ fallback(); }
+      return;
+    }
+    var m = ev.target.closest("#menu-btn");
+    if(m){ var open = $("navlinks").classList.toggle("open"); m.setAttribute("aria-expanded", open); return; }
+    if(ev.target.closest(".navlinks a")){ $("navlinks").classList.remove("open"); $("menu-btn").setAttribute("aria-expanded","false"); }
+  });
+
+  if("IntersectionObserver" in window){
+    var links = document.querySelectorAll(".navlinks a");
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(a){ a.classList.toggle("active", a.getAttribute("href")==="#"+e.target.id); }); } });
+    }, {rootMargin:"-45% 0px -50% 0px"});
+    ["services","experience","projets","competences","formation"].forEach(function(id){ var s=$(id); if(s) so.observe(s); });
+  }
+
+  render(); countUp(); rot.start();
+})();
+</script>
+</body>
+</html>
